@@ -1,4 +1,6 @@
-function Input({ type, placeholder }) {
+import { useState } from "react";
+
+function Input({ type, placeholder, state, setState }) {
   return (
     <label className="input validator">
       <input
@@ -9,6 +11,8 @@ function Input({ type, placeholder }) {
         minLength="3"
         maxLength="30"
         title="Only letters, numbers or dash"
+        value={state}
+        onChange={(e) => setState(e.target.value)}
       />
     </label>
   );
