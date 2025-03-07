@@ -7,6 +7,7 @@ import {
   signinUserStart,
   signinUserSuccess,
 } from "../slice/auth";
+import { Validation } from ".";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -31,6 +32,7 @@ function Register() {
   return (
     <form className="form">
       <h2>Resgister</h2>
+      <Validation />
       <Input
         type={"text"}
         placeholder={"Username"}

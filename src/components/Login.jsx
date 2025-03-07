@@ -31,6 +31,7 @@ function Login() {
   return (
     <form className="form">
       <h2>Log In</h2>
+      <Validation />
       <Input
         type={"email"}
         placeholder={"Email"}
