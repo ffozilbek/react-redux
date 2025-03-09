@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Input } from "./ui";
+import { Input } from "../ui";
 import { useDispatch, useSelector } from "react-redux";
 import AuthService from "../servise/auth";
 import {

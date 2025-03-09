@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import { Main, Navbar, LogIn, Register } from "./components/";
+import { Main, Navbar, LogIn, Register, ArticleDetail } from "./components/";
 import { useEffect } from "react";
 import AuthService from "./servise/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,7 +8,7 @@ import { getItem } from "./helpers/persistance-store";
 import ArticleService from "./servise/article";
 import { getArticlesStart, getArticlesSuccess } from "./slice/article";
 // import { Loader } from "./ui";
-import { Loader } from "./components/ui";
+import { Loader } from "./ui";
 
 function App() {
   const dispatch = useDispatch();
@@ -46,6 +46,7 @@ function App() {
         <Route element={<Main />} path="/" />
         <Route element={<LogIn />} path="/login" />
         <Route element={<Register />} path="/register" />
+        <Route element={<ArticleDetail />} path="/article/:slug" />
       </Routes>
     </div>
   );
