@@ -2,13 +2,17 @@ import { Route, Routes } from "react-router-dom";
 import { Main, Navbar, LogIn, Register } from "./components/";
 import { useEffect } from "react";
 import AuthService from "./servise/auth";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signinUserSuccess } from "./slice/auth";
 import { getItem } from "./helpers/persistance-store";
+import ArticleService from "./servise/article";
+import { getArticlesStart, getArticlesSuccess } from "./slice/article";
+// import { Loader } from "./ui";
+import { Loader } from "./components/ui";
 
 function App() {
   const dispatch = useDispatch();
-
+  const { isLoading } = useSelector((state) => state.article);
   const getUser = async () => {
     try {
       const response = await AuthService.getUser();
@@ -18,15 +22,25 @@ function App() {
     }
   };
 
+  const getArticles = async () => {
+    dispatch(getArticlesStart());
+    try {
+      const response = await ArticleService.getArticles();
+      dispatch(getArticlesSuccess(response.articles));
+    } catch (error) {}
+  };
+
   useEffect(() => {
     const token = getItem("token");
     if (token) {
       getUser();
     }
+    getArticles();
   }, []);
 
   return (
     <div>
+      {isLoading && <Loader />}
       <Navbar />
       <Routes>
         <Route element={<Main />} path="/" />
