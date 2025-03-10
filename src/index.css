@@ -47,3 +47,8 @@
   left: 0;
   z-index: 99;
 }
+
+.article-detail h1 {
+  font-size: 36px;
+  font-weight: 600;
+}

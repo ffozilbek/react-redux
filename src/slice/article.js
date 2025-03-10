@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   isLoading: false,
   articles: [],
-  articleDetail: null,
+  articleDetail: [],
   error: null,
 };
 
@@ -20,6 +20,7 @@ export const articleSlice = createSlice({
     },
     getArticleFailure: (state, action) => {
       state.error = action.payload;
+      state.isLoading = false;
     },
     getArticleDetailStart: (state) => {
       state.isLoading = true;
